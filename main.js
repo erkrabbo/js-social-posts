@@ -75,6 +75,7 @@ for (let i = 0; i < likeButton.length; i++){
 function feedGenerator(){
     for (let i = 0; i < posts.length; i++){
         const post = document.createElement('div');
+        const italianCreated = italianDate(i);
         post.classList.add('post');
 
         post.innerHTML = `
@@ -85,7 +86,7 @@ function feedGenerator(){
                                     </div>
                                     <div class="post-meta__data">
                                         <div class="post-meta__author">${posts[i].author.name}</div>
-                                        <div class="post-meta__time">4 mesi fa</div>
+                                        <div class="post-meta__time">${italianCreated}</div>
                                     </div>                    
                                 </div>
                             </div>
@@ -130,4 +131,16 @@ function likeUnlike(e){
     
     likesNumber[this.id].innerHTML = `${posts[this.id].likes}`;
     e.preventDefault();
+}
+
+function italianDate(i){
+    const date = posts[i].created.split('-');
+    let itaVersion = [];
+
+    for(i = date.length -1; i >= 0; i--){
+        itaVersion.push(date[i]);
+    }
+
+    return itaVersion.join('-');
+    
 }
