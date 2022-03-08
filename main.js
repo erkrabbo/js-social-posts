@@ -60,18 +60,18 @@ const feedContainer = document.querySelector('.posts-list');
 
 feedGenerator();
 
-const likesNumber = document.querySelectorAll('#like-counter-1');
+const likesNumber = feedContainer.querySelectorAll('#like-counter-1');
 const likeButton = feedContainer.querySelectorAll('.like-button');
 const likedPosts = [];
 
-for (let i = 0; i < likeButton.length; i++){
+for (let i = likeButton.length -1; i >= 0; i--){
     likeButton[i].addEventListener('click', likeUnlike);
-    likeButton[i].setAttribute('id', i);
+    likeButton[i].setAttribute('id', -1*(i - likeButton.length +1));
     likeButton[i].style.cursor = 'pointer';
 }
 
 function feedGenerator(){
-    for (let i = 0; i < posts.length; i++){
+    for (let i = posts.length -1; i >= 0; i--){
         const post = document.createElement('div');
         const italianCreated = italianDate(i);
         post.classList.add('post');
@@ -129,6 +129,8 @@ function feedGenerator(){
 
 function likeUnlike(e){
     this.classList.toggle('like-button--liked');
+
+    console.log(this.id)
     
     if (this.classList.contains('like-button--liked')){
         posts[this.id].likes++;
@@ -140,7 +142,7 @@ function likeUnlike(e){
         likedPosts.splice(likedPosts.indexOf(this.id), 1);
     }
     
-    likesNumber[this.id].innerHTML = `${posts[this.id].likes}`;
+    likesNumber[-1 * (this.id - likesNumber.length + 1)].innerHTML = `${posts[this.id].likes}`;
     e.preventDefault();
 }
 
