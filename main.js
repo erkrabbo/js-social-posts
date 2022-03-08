@@ -78,11 +78,21 @@ function feedGenerator(){
         const italianCreated = italianDate(i);
         post.classList.add('post');
 
+        const nameFirstLetter = posts[i].author.name.split(' ')[0][0].toUpperCase();
+        const surnameFirstLetter = posts[i].author.name.split(' ')[1][0].toUpperCase();
+
+        console.log(nameFirstLetter,surnameFirstLetter)
+        // const nameSurname = posts[i].author.name.split(' ')[0][0].toUpperCase();
+        // const nameLetter = nameSurname[0].toUpperCase();
+        // const surnameLetter = nameSurname[1][0].toUpperCase();
+        // console.log(nameLetter);
+
+        // <span class="profile-pic-default span">${nameFirstLetter}${surnameFirstLetter}</span> 
         post.innerHTML = `
                         <div class="post__header">
                                 <div class="post-meta">                    
-                                    <div class="post-meta__icon">
-                                        <img class="profile-pic" src="${posts[i].author['image']}" alt="${posts[i].author.name}">                    
+                                    <div class="post-meta__icon profile-pic-default">
+                                        <img class="profile-pic" src="${posts[i].author['image']}" alt="${nameFirstLetter}${surnameFirstLetter}">               
                                     </div>
                                     <div class="post-meta__data">
                                         <div class="post-meta__author">${posts[i].author.name}</div>

@@ -76,6 +76,12 @@ h1 {
     width: 60px;
     overflow: hidden;
     border-radius: 50%;
+
+
+    font-weight: bold;
+    color: #023047;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 .profile-pic-default span {
