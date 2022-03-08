@@ -67,9 +67,7 @@ const likedPosts = [];
 for (let i = 0; i < likeButton.length; i++){
     likeButton[i].addEventListener('click', likeUnlike);
     likeButton[i].setAttribute('id', i);
-    likeButton[i].addEventListener('mouseover', () =>{
-        likeButton[i].style.cursor = 'pointer';
-    });
+    likeButton[i].style.cursor = 'pointer';
 }
 
 function feedGenerator(){
@@ -78,10 +76,19 @@ function feedGenerator(){
         const italianCreated = italianDate(i);
         post.classList.add('post');
 
-        const nameFirstLetter = posts[i].author.name.split(' ')[0][0].toUpperCase();
-        const surnameFirstLetter = posts[i].author.name.split(' ')[1][0].toUpperCase();
+        let nameFirstLetter;
+        let surnameFirstLetter;
+        let profPicture;
         
-        const profPicture = posts[i].author['image'] != null ? `<img class="profile-pic" src="${posts[i].author['image']}" alt="${posts[i].author.name}">` : `<span>${nameFirstLetter}${surnameFirstLetter}</span>`
+        if (posts[i].author['image'] != null){
+            profPicture = `<img class="profile-pic" src="${posts[i].author['image']}" alt="${posts[i].author.name}">`;
+
+        } else {
+            nameFirstLetter = posts[i].author.name.split(' ')[0][0].toUpperCase();
+            surnameFirstLetter = posts[i].author.name.split(' ')[1][0].toUpperCase();
+
+            profPicture = `<span>${nameFirstLetter}${surnameFirstLetter}</span>`;
+        }
 
 
         post.innerHTML = `
