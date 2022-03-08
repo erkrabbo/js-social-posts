@@ -67,6 +67,9 @@ const likedPosts = [];
 for (let i = 0; i < likeButton.length; i++){
     likeButton[i].addEventListener('click', likeUnlike);
     likeButton[i].setAttribute('id', i);
+    likeButton[i].addEventListener('mouseover', () =>{
+        likeButton[i].style.cursor = 'pointer';
+    });
 }
 
 function feedGeneretor(){
@@ -112,6 +115,7 @@ function feedGeneretor(){
 
 function likeUnlike(e){
     this.classList.toggle('like-button--liked');
+    
     if (this.classList.contains('like-button--liked')){
         posts[this.id].likes++;
 
@@ -120,15 +124,10 @@ function likeUnlike(e){
         posts[this.id].likes--;
 
         likedPosts.splice(likedPosts.indexOf(this.id), 1);
-        // likedPosts.push(this.id)
     }
 
     console.log(this);
     
     likesNumber[this.id].innerHTML = `${posts[this.id].likes}`;
     e.preventDefault();
-}
-
-function refreshLikes(){
-    const likesNumber = document.querySelector('')
 }
