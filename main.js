@@ -61,7 +61,7 @@ const feedContainer = document.querySelector('.posts-list');
 feedGenerator();
 
 const likesNumber = document.querySelectorAll('#like-counter-1');
-const likeButton = document.querySelectorAll('.like-button');
+const likeButton = feedContainer.querySelectorAll('.like-button');
 const likedPosts = [];
 
 for (let i = 0; i < likeButton.length; i++){
